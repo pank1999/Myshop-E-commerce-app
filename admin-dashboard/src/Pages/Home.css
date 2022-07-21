@@ -2,3 +2,7 @@
     flex: 4;
     background-color: rgb(238, 240, 241);
 }
+.HomeWidget{
+    display: flex;
+    margin: 20px;
+}
