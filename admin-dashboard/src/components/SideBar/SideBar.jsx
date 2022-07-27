@@ -1,5 +1,6 @@
 import './Sidebar.css';
 import {ChatBubbleOutline, FeedbackOutlined, LineStyle, MailOutline, PersonOutline, ReportOutlined, Timeline, TrendingUp, AccountCircleOutlined} from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 export default function SideBar() {
   return (
     <div className="sidebar">
@@ -11,7 +12,8 @@ export default function SideBar() {
             <ul className='sideBarList'>
                  <li className='sideBarListItem active'>
                     <LineStyle className='sideBarIcon'/>
-                    Home
+                    <Link to="/" className='linkItem ' >Home</Link>
+                    
                  </li>
                  <li className='sideBarListItem'>
                     <Timeline className='sideBarIcon'/>
@@ -33,7 +35,8 @@ export default function SideBar() {
             <ul className='sideBarList'>
                  <li className='sideBarListItem'>
                     <PersonOutline className='sideBarIcon'/>
-                    User
+                     <Link to="/Users" className='linkItem ' >User</Link>
+                    
                  </li>
                  <li className='sideBarListItem'>
                     <Timeline  className='sideBarIcon'/>
