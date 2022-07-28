@@ -1,0 +1,60 @@
+.NewUser{
+    flex:4;
+    padding: 30px;
+
+}
+.Title{
+    padding: 10px;
+    border-left: 5px solid rgb(121, 44, 245);
+    background-color: rgb(224, 192, 253);
+}
+.UserForm{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.UserFormItem{
+   width: 400px;
+   display: flex;
+   flex-direction: column;
+   margin-top: 10px;
+   margin-left: 20px;
+}
+.UserFormItem>labal{
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(204, 201, 201);
+}
+.UserFormItem>input{
+    height: 30px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid gray;
+}
+.Gender>input{
+  margin-top: 10px;
+}
+.Gender>span{
+    margin: 10px;
+    font-size: 18px;
+    color: rgb(216, 216, 216);
+}
+.userSelect{
+    height: 40px;
+    border-radius: 5px;
+
+}
+.userAddButton{
+    width: 200px;
+    border: none;
+    margin-top: 30px;
+    margin-left: 150px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgb(183, 110, 252);
+    color: rgb(40, 39, 41);
+}
