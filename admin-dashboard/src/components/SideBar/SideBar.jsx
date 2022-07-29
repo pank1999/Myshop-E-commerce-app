@@ -40,7 +40,10 @@ export default function SideBar() {
                  </li>
                  <li className='sideBarListItem'>
                     <Timeline  className='sideBarIcon'/>
+                    <Link to="/Products" className='linkItem ' >
                     Products
+                    </Link>
+                    
                  </li>
                  <li className='sideBarListItem'>
                     <TrendingUp  className='sideBarIcon'/>

@@ -1,0 +1,126 @@
+.Product{
+    flex:4;
+    padding: 20px;
+}
+.ProductTitleContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.CreateProductButton{
+    border: none;
+    padding: 5px 20px;
+    background-color: teal;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 50px;
+    font-size: 18px;
+}
+.ProductTop{
+    display: flex;
+}
+.ProductTopLeft{
+  flex: 2;
+}
+.ProductTopRight{
+ flex: 1;
+ margin: 20px;
+ padding: 30px;
+ box-shadow: 0px 0px 8px 8px rgb(216, 214, 214);
+ border-radius: 10px;
+}
+.ProductInfoTop{
+   display: flex;
+   align-items: center;
+}
+.ProductImg{
+   height: 50px;
+   width: 50px;
+   object-fit: cover;
+}
+.ProductName{
+   font-size: 16px;
+   font-weight: 600;
+   margin-left: 30px;
+
+}
+.ProductInfoBottom{
+    margin-top: 20px;
+}
+.ProductInfoItem{
+   width: 150px;
+   display: flex;
+   justify-content: space-between;    
+
+}
+.ProductInfoKey{
+  font-size: 16px;
+  font-weight: 600;
+}
+.ProductInfoValue{
+   color: rgb(225, 226, 226);
+   font-size: 14px;
+}
+.ProductBottom{
+    box-shadow: 0px 0px 8px 8px rgb(216, 214, 214);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.ProductForm{
+    display: flex;
+    justify-content: space-between;
+}
+.ProductBottomLeft{
+    display: flex;
+    padding-left: 50px;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+.ProductForm labal{
+    margin-top: 10px;
+    color: rgb(212, 212, 212);
+}
+.ProductForm input{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+}
+.ProductForm select{
+    height: 40px;
+    border-radius: 5px;
+}
+.ProductBottomRight{
+    margin-left: 400px;
+}
+
+.UserUpdateUpload{
+    align-items: center;
+    display: flex;
+}
+.UserUpdateUpload>input{
+   display: none;
+   
+   
+}
+.UserUpdateUpload>labal{
+    margin-left: 50px;
+    cursor: pointer;
+    color: black;
+    font-size: 30px;
+}
+
+.UserUpdateButton{
+    border: none;
+    background-color: rgb(124, 97, 246);
+    color: white;
+    width: 200px;
+    margin-top: 100px;
+    font-size: 20px;
+    height: 50px;
+    cursor: pointer;
+}

@@ -1,0 +1,18 @@
+.Products{
+   flex:4;
+}
+
+.productAction{
+    display:flex;
+    align-items:center;
+ }
+ .productAction button{
+    background-color: rgb(112, 230, 153);
+    color: rgb(15, 135, 4);
+    padding: 5px;
+    border: none;
+    width: 70px;
+    border-radius: 5px;
+    margin-right: 40px;
+    cursor: pointer;
+ }
