@@ -1,12 +1,56 @@
 import './Product.css'
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import Chart from "../../components/Charts/Chart";
 import {productData} from "../../dummyDataCharts";
 import { Publish } from '@material-ui/icons';
+import { useSelector } from 'react-redux';
+import { useEffect, useMemo, useState } from 'react';
+import { userRequest } from '../../requestMethod';
 
 
 export default function Product() {
-  return (
+   const location = useLocation();
+   const productId=location.pathname.split("/")[3];
+   const [productStats,setProductStats]=useState([]);
+
+   const months=useMemo(
+    ()=>[
+    'Jan',
+    "Feb",
+    "Mar",
+    "April",
+    'May',
+    'Jun',
+    'July',
+    'Aug',
+    'Sep',
+    "Oct",
+    "Nov",
+    "Dec"
+  ],[]
+  );
+  useEffect(()=>{
+     const getProductStats = async ( )=>{
+      try{
+          const res=await userRequest.get(`order/income?pid=`+productId);
+          res.data.map(item=>
+            setProductStats(prev=>[
+              ...prev,
+              {name:months[item._id-1],"Sales":item.total},
+            ])
+          )
+      }catch(err){
+
+      }
+     }
+     getProductStats();
+  },[months]);
+
+
+   const product = useSelector((state)=>state.product.product.find((product)=>product._id===productId));
+   console.log(product);
+   console.log(productStats);
+    return (
     <div className='Product'>
          <div className="ProductTitleContainer">
             <h2 className="ProductTitle">Product</h2>
@@ -17,30 +61,30 @@ export default function Product() {
         </div>
         <div className='ProductTop'>
             <div className='ProductTopLeft'>
-                <Chart  Title="Sale Performance " data={productData} dataKey="Sales"/>
+                <Chart  Title="Sale Performance " data={productStats} dataKey="Sales"/>
             </div>
             <div className='ProductTopRight'>
                 <div className='ProductInfoTop'>
-                     <img className='ProductImg' src='https://rukminim1.flixcart.com/image/312/312/kpinwy80/headphone/r/1/q/mwp22hn-a-apple-original-imag3qe9eqkfhmg8.jpeg?q=70' alt=''/>
-                     <span className='ProductName'>Apple AirPods</span>
+                     <img className='ProductImg' src={product.img} alt=''/>
+                     <div>
+                       <span className='ProductName'>{product.title}</span> <br/>
+                       <span className='ProductName' style={{color:"gray"}}>{product.desc}</span>
+                     </div>
+                     
                 </div>
                 <div className='ProductInfoBottom'>
                   <div className='ProductInfoItem'>
                      
-                     <span className='ProductInfoKey'>Id</span>
-                     <span className='ProductInfoValue'>123</span>
-                  </div>
-                  <div className='ProductInfoItem'>
-                     <span className='ProductInfoKey'>Sales</span>
-                     <span className='ProductInfoValue'>$1233</span>
-                  </div>
-                  <div className='ProductInfoItem'>
-                     <span className='ProductInfoKey'>status</span>
-                     <span className='ProductInfoValue'>Active</span>
+                     <span className='ProductInfoKey'>Id: </span>
+                     <span className='ProductInfoValue'>{product._id}</span>
                   </div>
                   <div className='ProductInfoItem'>
                      <span className='ProductInfoKey'>Price</span>
-                     <span className='ProductInfoValue'>$123</span>
+                     <span className='ProductInfoValue'>{product.price}</span>
+                  </div>
+                  <div className='ProductInfoItem'>
+                     <span className='ProductInfoKey'>InStock</span>
+                     <span className='ProductInfoValue'>{product.inStock?"Yes":"No"}</span>
                   </div>
                 </div>
                 
@@ -51,24 +95,22 @@ export default function Product() {
         <form className='ProductForm'>
              <div className='ProductBottomLeft'>
                     <labal>Product name</labal>
-                    <input type="text"  placeholder='Product name'/>
+                    <input type="text"  placeholder={product.title}/>
+                    <labal>Description</labal>
+                    <input type="text" placeholder={product.desc} />
                     <labal htmlFor="stock">In Stock</labal>
                     <select name='stock' id='stock'>
-                        <option value="Yes"  >yes</option>
-                        <option value="No">No</option>
-                    </select>
-                    <labal htmlFor="Active">Active</labal>
-                    <select name='Active' id='Active'>
-                        <option value="Yes" >yes</option>
-                        <option value="No">No</option>
+                        <option value="true"  >yes</option>
+                        <option value="false">No</option>
                     </select>
                     <labal>Price</labal>
-                    <input type="Number" placeholder='Number' />
+                    <input type="Number" placeholder={product.price} />
+                    
 
             </div>
             <div className='ProductBottomRight'>
                           <div className="UserUpdateUpload">
-                                <img className="UploadImg" src="https://rukminim1.flixcart.com/image/312/312/kpinwy80/headphone/r/1/q/mwp22hn-a-apple-original-imag3qe9eqkfhmg8.jpeg?q=70"  alt=""/>
+                                <img className="UploadImg" src={product.img} alt=""/>
                                 <labal htmlFor="file"><Publish /> </labal>
                                 <input type="file" id="file" />
                            </div>

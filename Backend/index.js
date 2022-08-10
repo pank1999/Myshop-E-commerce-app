@@ -16,7 +16,6 @@ mongoose.connect(process.env.MONGO_URL
     console.log(err);
 });
 
-
 const app=express();
 
 app.use(express.json());
@@ -34,5 +33,5 @@ app.use("/api/order",orderRouter);
 app.use("/api/checkout",checkoutRouter);
 
 app.listen(process.env.PORT || 5000,()=>{
-   console.log("surver is running on port 3001");
+   console.log("surver is running on port 3003");
 });

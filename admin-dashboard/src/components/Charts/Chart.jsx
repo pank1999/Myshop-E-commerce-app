@@ -12,7 +12,7 @@ export default function Chart({Title,data,dataKey}) {
        <ResponsiveContainer width="100%"  aspect={4/1}>
           <LineChart data={data}>
            <CartesianGrid strokeDasharray="3 3" />
-           <XAxis dataKey={dataKey} />
+           <XAxis dataKey="name" />
           
            <Tooltip />
            <Legend />

@@ -12,6 +12,8 @@ router.post("/register",async (req,res)=>{
         userName:req.body.username,
         email:req.body.email,
         password:Crypto.AES.encrypt(req.body.password,process.env.PASS_SEC).toString(),
+        gender:req.body.gender,
+        dob:req.body.dob,
 
     });    
 

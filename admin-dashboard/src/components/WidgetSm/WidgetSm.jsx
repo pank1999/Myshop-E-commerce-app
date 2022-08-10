@@ -1,16 +1,34 @@
 import './WidgetSm.css';
 import {Visibility} from "@material-ui/icons";
+import { useEffect, useState } from 'react';
+import { userRequest } from '../../requestMethod';
 
 export default function WidgetSm() {
+
+   const [users,setUsers]=useState([]);
+   
+   useEffect(()=>{
+     const getUsers= async ()=>{
+        try{
+            const res= await userRequest.get("/user/?new=true");
+            setUsers(res.data);
+            
+          }catch(err){
+           console.log(err);
+          }
+     }
+      getUsers(); 
+   },[])
   return (
     <div className='WidgetSm'>
        <span className='WidgetSmTitle'> New Join Member</span>
        <ul className='WidgetSmList'>
-          <li className='WidgetSmListItem'>
-              <img src='https://d1fdloi71mui9q.cloudfront.net/c9iUgtZMRdWpZx1UQcxd_82WH7SO06X0IQ9WI' className='img' alt='img' />
+         { users.map(user=>(
+          <li className='WidgetSmListItem' key={user._id}>
+              <img src={user.img || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"} className='img' alt='img' />
               <div className='WidgetSmUser'>
-                 <span className='WidgetSmUsername'>pankaj pandey</span>
-                 <span className='WidgetSmUserTitle'>Software Engineer</span>
+                 <span className='WidgetSmUsername'>{user.userName}</span>
+                 {/* <span className='WidgetSmUserTitle'>Software Engineer</span> */}
               </div>
               <button className='WidgetSmButton'>
                   <Visibility style={{fontSize:"16px",marginRight:"5px"}} /> Display
@@ -18,71 +36,8 @@ export default function WidgetSm() {
               </button>
              
           </li>
-
-          <li className='WidgetSmListItem'>
-              <img src='https://d1fdloi71mui9q.cloudfront.net/c9iUgtZMRdWpZx1UQcxd_82WH7SO06X0IQ9WI' className='img' alt='img' />
-              <div className='WidgetSmUser'>
-                 <span className='WidgetSmUsername'>pankaj pandey</span>
-                 <span className='WidgetSmUserTitle'>Software Engineer</span>
-              </div>
-              <button className='WidgetSmButton'>
-                  <Visibility style={{fontSize:"16px",marginRight:"5px"}} /> Display
-
-              </button>
-             
-          </li>
-
-          <li className='WidgetSmListItem'>
-              <img src='https://d1fdloi71mui9q.cloudfront.net/c9iUgtZMRdWpZx1UQcxd_82WH7SO06X0IQ9WI' className='img' alt='img' />
-              <div className='WidgetSmUser'>
-                 <span className='WidgetSmUsername'>pankaj pandey</span>
-                 <span className='WidgetSmUserTitle'>Software Engineer</span>
-              </div>
-              <button className='WidgetSmButton'>
-                  <Visibility style={{fontSize:"16px",marginRight:"5px"}} /> Display
-
-              </button>
-             
-          </li>
-
-          <li className='WidgetSmListItem'>
-              <img src='https://d1fdloi71mui9q.cloudfront.net/c9iUgtZMRdWpZx1UQcxd_82WH7SO06X0IQ9WI' className='img' alt='img' />
-              <div className='WidgetSmUser'>
-                 <span className='WidgetSmUsername'>pankaj pandey</span>
-                 <span className='WidgetSmUserTitle'>Software Engineer</span>
-              </div>
-              <button className='WidgetSmButton'>
-                  <Visibility  style={{fontSize:"16px",marginRight:"5px"}}/> Display
-
-              </button>
-             
-          </li>
-
-          <li className='WidgetSmListItem'>
-              <img src='https://d1fdloi71mui9q.cloudfront.net/c9iUgtZMRdWpZx1UQcxd_82WH7SO06X0IQ9WI' className='img' alt='img' />
-              <div className='WidgetSmUser'>
-                 <span className='WidgetSmUsername'>pankaj pandey</span>
-                 <span className='WidgetSmUserTitle'>Software Engineer</span>
-              </div>
-              <button className='WidgetSmButton'>
-                  <Visibility style={{fontSize:"16px",marginRight:"5px"}} /> Display
-
-              </button>
-             
-          </li>
-
-          <li className='WidgetSmListItem'>
-              <img src='https://d1fdloi71mui9q.cloudfront.net/c9iUgtZMRdWpZx1UQcxd_82WH7SO06X0IQ9WI' className='img' alt='img' />
-              <div className='WidgetSmUser'>
-                 <span className='WidgetSmUsername'>pankaj pandey</span>
-                 <span className='WidgetSmUserTitle'>Software Engineer</span>
-              </div>
-              <button className='WidgetSmButton'>
-                  <Visibility  style={{fontSize:"16px",marginRight:"5px"}} /> Display
-
-              </button>
-             
-          </li>
+          ))}
+          
        </ul>
     </div>
   )

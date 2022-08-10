@@ -32,6 +32,18 @@
     padding: 10px;
     border: 1px solid gray;
 }
+.UserFormItem select{
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+
+}
+.UserFormItem select option{
+    font-size: 20px;
+    background-color: rgb(238, 222, 253);
+    color: rgb(121, 53, 185);
+}
+
 .Gender>input{
   margin-top: 10px;
 }

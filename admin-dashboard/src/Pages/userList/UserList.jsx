@@ -3,8 +3,9 @@ import { DataGrid } from '@mui/x-data-grid';
 import {DeleteOutline} from "@material-ui/icons";
 import {Link} from "react-router-dom";
 import {userRows} from "../../dummyDataCharts";
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import { deleteClient, getClients } from '../../redux/apiCalls';
 
 
  
@@ -12,22 +13,31 @@ import { useState } from 'react';
   
 export default function UserList() {
 
+  const dispatch=useDispatch();
+
+  useEffect(()=>{
+        getClients(dispatch)
+  },[dispatch])
+
   const [data,setData]=useState(userRows);
   const handleClick=(id)=>{
-      setData(data.filter(items=>items.id!==id));
-  }
+     deleteClient(id,dispatch);
+     setData(data.filter(items=>items.id!==id));
+  } 
+  const clients=useSelector((state)=>state.client.currentClients);
+  console.log(clients);
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'User', headerName: 'User', width: 150 ,renderCell:(params)=>{
+    { field: '_id', headerName: 'ID', width: 150 },
+    { field: 'userName', headerName: 'User', width: 150 ,renderCell:(params)=>{
       return(
         <div style={{display:"flex",alignItems:"center"}}>
-            <img   src={params.row.avatar} alt="" style={{height:"35px",width:"35px", borderRadius:"50%",marginRight:"10px"}} />
-            {params.row.username}
+            {/* <img   src={params.row.avatar} alt="" style={{height:"35px",width:"35px", borderRadius:"50%",marginRight:"10px"}} /> */}
+            {params.row.userName}
         </div>
       )
     }},
-    { field: 'email', headerName: 'Email', width: 200 },
+    { field: 'email', headerName: 'Email', width: 150 },
     {
       field: 'status',
       headerName: 'Status',
@@ -35,19 +45,19 @@ export default function UserList() {
       width: 90,
     },
     {
-      field: 'transaction',
-      headerName: 'Transaction',
+      field: 'dob',
+      headerName: 'D.O.B',
       description: 'This column has a value getter and is not sortable.',
       sortable: false,
-      width: 160,
+      width: 100,
 
     },
     {
-        field: 'avatar',
-        headerName: 'Avatar',
+        field: 'gender',
+        headerName: 'Gender',
         description: 'This column has a value getter and is not sortable.',
         sortable: false,
-        width: 160,
+        width: 100,
   
       },
       {
@@ -57,11 +67,11 @@ export default function UserList() {
         renderCell:(params)=>{
           return(
             <div className='UserAction'>
-              <Link to={"/Users/EditUser/"+params.row.id}>
+              <Link to={"/Users/EditUser/"+params.row._id}>
                  <button>Edit</button>
               </Link>
               
-               <DeleteOutline style={{cursor:'pointer'}} onClick={()=>{handleClick(params.row.id);}} />
+               <DeleteOutline style={{cursor:'pointer'}} onClick={()=>{handleClick(params.row._id);}} />
             </div>
           )
         }
@@ -70,11 +80,12 @@ export default function UserList() {
     return (
     <div className='userList'>
        <DataGrid
-        rows={data}
+        rows={clients}
         columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
         checkboxSelection
+        getRowId={row=>row._id}
         disableSelectionOnClick
       />
     </div>

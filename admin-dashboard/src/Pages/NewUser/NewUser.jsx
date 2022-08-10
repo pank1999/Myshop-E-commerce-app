@@ -1,54 +1,61 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createClient } from '../../redux/apiCalls';
 import './NewUser.css';
 
 export default function NewUser() {
-  return (
+   const dispatch=useDispatch();
+
+   const [newUser,setNewUser]=useState({});
+    
+   const handleChange=(e)=>{
+      setNewUser((prev)=>(
+       {...prev,[e.target.name]:e.target.value}
+      ));
+   }
+
+   const handleSubmit=(e)=>{
+     e.preventDefault();
+     createClient(dispatch,newUser);
+     console.log(newUser);
+
+   }
+
+   return (
     <div className='NewUser'>
         <h2 className='Title'>New User</h2>
         <form className='UserForm'>
              <div className='UserFormItem'>
                     <labal>Username</labal>
-                    <input type="text" placeholder='pankaj@1888'/>
+                    <input type="text" name="username" onChange={handleChange} placeholder='pankaj@1888'/>
              </div>
              <div className='UserFormItem'>
                     <labal>Password</labal>
-                    <input type="password" placeholder="pankaj"/>
-             </div>
-             <div className='UserFormItem'>
-                    <labal>Full Name</labal>
-                    <input type="text" placeholder='pankaj pandey'/>
-             </div>
-             <div className='UserFormItem'>
-                    <labal>D.O.B</labal>
-                    <input type="date" placeholder='02/09/2000'/>
+                    <input type="password" name='password' onChange={handleChange} placeholder="pankaj"/>
              </div>
              <div className='UserFormItem'>
                     <labal>Email</labal>
-                    <input type="email" placeholder="pankaj@gmail.com"/>
+                    <input type="email" name="email" onChange={handleChange} placeholder='pankaj@gmail.com'/>
              </div>
              <div className='UserFormItem'>
-                    <labal>Mobile No</labal>
-                    <input type="text" placeholder="8630211986"/>
+                    <labal>D.O.B</labal>
+                    <input type="date" name="dob" onChange={handleChange} placeholder='02/09/2000'/>
              </div>
-             <div className='UserFormItem'>
-                    <labal>Address</labal>
-                    <input type="text" placeholder="address Home"/>
-             </div>
+            
              <div className='UserFormItem'>
                     <labal>Gender</labal>
-                    <div className='Gender'>
-                       <input type="radio" name="gender" id='male' value="male" /><span>Male</span>
-                       <input type="radio" name="gender"  id='female' value="female"/> <span>Female</span>
-                       <input type="radio" name="gender" id='others' value="others" /> <span>others</span>
-                    </div>
-             </div>
-             <div className='UserFormItem'>
-                    <labal>Active</labal>
-                    <select className='userSelect' name='active' id='active'>
-                        <option  value="Yes">Yes</option>
-                        <option  value="No">No</option>
+                    <select name='gender' onChange={handleChange}>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="others">others</option>
                     </select>
              </div>
-             <button className='userAddButton'>Create</button>
+             {/* <div className='UserFormItem'>
+                   <labal>Profile Picture</labal>
+                   <input type="file"  />
+             </div> */}
+             
+             <button className='userAddButton' onClick={handleSubmit} >Create</button>
 
         </form>
     </div>
