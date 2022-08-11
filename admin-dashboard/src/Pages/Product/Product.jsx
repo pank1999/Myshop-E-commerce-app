@@ -1,18 +1,33 @@
 import './Product.css'
 import {Link, useLocation} from "react-router-dom";
 import Chart from "../../components/Charts/Chart";
-import {productData} from "../../dummyDataCharts";
+//import {productData} from "../../dummyDataCharts";
 import { Publish } from '@material-ui/icons';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo, useState } from 'react';
 import { userRequest } from '../../requestMethod';
+import { updateProducts } from '../../redux/apiCalls';
 
 
 export default function Product() {
    const location = useLocation();
+   const dispatch=useDispatch();
+
    const productId=location.pathname.split("/")[3];
    const [productStats,setProductStats]=useState([]);
+   const [UpdateProduct,setUpdateProduct]=useState({});
 
+   const handleChange=(e)=>{
+      setUpdateProduct((prev)=>(
+        {...prev,[e.target.name]:e.target.value}
+      ));
+   }
+
+   const handleClick=(e)=>{
+    e.preventDefault();
+    console.log(UpdateProduct);
+    updateProducts(productId,UpdateProduct,dispatch);
+   }
    const months=useMemo(
     ()=>[
     'Jan',
@@ -95,16 +110,16 @@ export default function Product() {
         <form className='ProductForm'>
              <div className='ProductBottomLeft'>
                     <labal>Product name</labal>
-                    <input type="text"  placeholder={product.title}/>
+                    <input type="text" name="title" onChange={handleChange} placeholder={product.title}/>
                     <labal>Description</labal>
-                    <input type="text" placeholder={product.desc} />
+                    <input type="text" name="desc" onChange={handleChange} placeholder={product.desc} />
                     <labal htmlFor="stock">In Stock</labal>
-                    <select name='stock' id='stock'>
-                        <option value="true"  >yes</option>
+                    <select name='inStock'  onChange={handleChange} >
+                        <option value="true" >yes</option>
                         <option value="false">No</option>
                     </select>
                     <labal>Price</labal>
-                    <input type="Number" placeholder={product.price} />
+                    <input type="Number" onChange={handleChange} name="price" placeholder={product.price} />
                     
 
             </div>
@@ -114,7 +129,7 @@ export default function Product() {
                                 <labal htmlFor="file"><Publish /> </labal>
                                 <input type="file" id="file" />
                            </div>
-                           <button className="UserUpdateButton">Update</button>
+                           <button onClick={handleClick} className="UserUpdateButton">Update</button>
             </div>
 
         </form>

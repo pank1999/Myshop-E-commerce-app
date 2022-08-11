@@ -1,9 +1,16 @@
 import React from 'react'
 import "./TopBar.css";
-import {NotificationsNone , Language ,Settings} from '@material-ui/icons';
+import {NotificationsNone , Language ,Settings, PowerOutlined} from '@material-ui/icons';
+import { Logout } from '../redux/apiCalls';
+import { useDispatch} from 'react-redux';
 
 export default function TopBar() {
-  return (
+     const dispatch=useDispatch();
+
+    const handleLogout=()=>{
+       Logout(dispatch);
+    }
+     return (
     <div className='topBar'>
        <div className='topBarWrapper'>
            <div className='topLeft'>
@@ -21,8 +28,11 @@ export default function TopBar() {
                      <Settings/>
                      
                 </div>
-                <img src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80' alt='' className='topAvatar'/>
-
+                <div style={{display:"flex"}}>
+                  <img  src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80' alt='' className='topAvatar'/>
+                  <button onClick={handleLogout} className='Logoutbutton'>Logout</button>
+                </div>
+                
                 
            </div>    
        </div>

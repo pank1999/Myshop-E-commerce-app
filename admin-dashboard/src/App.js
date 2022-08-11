@@ -12,15 +12,15 @@ import NewProduct from "./Pages/NewProduct/NewProduct";
 import Login from "./Pages/Login/Login";
 
 function App() {
-  // const admin=true;
-  const admin=JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.user.isAdmin;
+   //const admin=true;
+    const admin=JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;
   //console.log(admin);
   return (
     <div className="App">
         <Routes>
            <Route exact path="/Login" element={<Login />} />
         </Routes>
-      { admin && (
+      { admin ? (
         <>
         <TopBar/>
         <div className="container">
@@ -41,7 +41,7 @@ function App() {
         </div>
 
         </>
-      )
+      ) : <Login />
       }  
       
     </div>

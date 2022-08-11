@@ -21,8 +21,8 @@ const productSlice=createSlice({
        state.error=true
      }),
 
-       //Delete product
-       deleteProductStart:((state)=>{
+    //Delete product
+     deleteProductStart:((state)=>{
         state.isFetching=true
         state.error=false
      }),

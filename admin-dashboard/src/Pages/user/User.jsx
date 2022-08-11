@@ -1,9 +1,15 @@
 import "./User.css";
 import {CalendarToday, EmailOutlined, PermIdentity, PhoneAndroid, Publish} from "@material-ui/icons";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
+import {useSelector } from 'react-redux';
 
 export default function  User() {
-  return (
+   const location=useLocation();
+   const userId=location.pathname.split("/")[3];
+   const user=useSelector((state)=>state.client.currentClients.find((client)=>client._id===userId));
+   console.log(user);
+
+   return (
     <div className='User' >
         <div className="UserTitleContainer">
             <h2 className="userTitle">Edit User</h2>

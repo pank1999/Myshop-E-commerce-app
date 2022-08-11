@@ -11,12 +11,15 @@ ${'' /* background: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.3))
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(rgba(255,255,255,0.3),rgb(140, 83, 197));
+background-color:rgb(114, 83, 143);
+${'' /* background:linear-gradient(rgba(255,255,255,0.3),rgb(140, 83, 197)); */}
 
 `
 const Wrapper=styled.div`
  width:30%;
  padding:20px;
+ border-radius:10px;
+ box-shadow:0px 0px 3px 3px gray;
  background-color:white;
  ${'' /* ${mobile({padding:"30px",width:"60%"})}; */}
 
@@ -24,7 +27,9 @@ const Wrapper=styled.div`
 const Title=styled.h1`
 font-size:24px;
 font-weight:300;
-color:teal;
+font-weight:600;
+text-align:center;
+color:rgb(114, 83, 143);
 `
 const Form=styled.form`
 display:flex;
@@ -39,17 +44,14 @@ ${'' /* ${mobile({padding:"10px",margin:"26px 10px 3px 0px"})}; */}
 
 `
 const Button=styled.button`
-width:40%;
+width:97%;
 border:none;
 padding:10px;
-background-color:teal;
+background-color:rgb(90, 83, 143);
 margin-top:10px;
 color:white;
 cursor:pointer;
-&:disabled{
-  background-color:lightgray;
-  cursor:not-allowed;
-}
+
 ${'' /* ${mobile({width:"100%"})}; */}
 
 `
@@ -81,7 +83,7 @@ export default function Login() {
   return (
     <Container>
          <Wrapper>
-             <Title> Admin Login to Account</Title>
+             <Title> Admin Login </Title>
              <Form>
                  <Input placeholder="Username" onChange={(e)=>{setUsername(e.target.value);}} />
                  <Input placeholder="Password" type="password" onChange={(e)=>{setPassword(e.target.value);}} />
@@ -89,7 +91,7 @@ export default function Login() {
                  <Button onClick={handeClick} >Login</Button>
                  <Error>Some thing went wrong</Error>
                  <Link>Do not you  remember the Password ?</Link>
-                 <Link> Create an account</Link>
+                
                  
 
 

@@ -1,4 +1,5 @@
 import { publicRequest,userRequest } from "../requestMethod";
+
 import {
    getProductsStart,
    getProductsSuccess,
@@ -14,7 +15,7 @@ import {
    createProductFail
  } from "./ProductRedux";
  
-import {loginStart,loginFailure,loginSuccess} from "./UserRedux";
+import {loginStart,loginFailure,loginSuccess,logout} from "./UserRedux";
 
 import { getClientStart,
    getClientSuccess,
@@ -42,8 +43,8 @@ export const getProducts =async (dispatch)=>{
 export const deleteProducts =async (id,dispatch)=>{
    dispatch(deleteProductStart());
    try{
-     // const res= await userRequest.delete(`/product/${id}`);
-      //console.log(res.data);
+       const res= await userRequest.delete(`/product/${id}`);
+        console.log(res.data);
       dispatch(deleteProductSuccess(id));
       
    }catch(err){
@@ -53,9 +54,10 @@ export const deleteProducts =async (id,dispatch)=>{
 
 //update product
 export const updateProducts =async (id,product,dispatch)=>{
+   //console.log("update product called");
    dispatch(updateProductStart());
    try{
-        const res= await userRequest.put(`/product/${id}`,{product});
+        const res= await userRequest.put(`/product/${id}`,product);
         console.log(res.data);
       dispatch(updateProductSuccess(id));
       
@@ -79,7 +81,7 @@ export const createProducts =async (product,dispatch)=>{
 
 
 export const login =async (dispatch,user)=>{
-   dispatch((loginStart));
+   dispatch(loginStart);
    try{
       const res= await publicRequest.post("/auth/login",user);
       console.log(res.data);
@@ -90,6 +92,10 @@ export const login =async (dispatch,user)=>{
    }
 }
 
+export const Logout=(dispatch)=>{
+   console.log("logout");
+    dispatch(logout());
+}
 
 
 //client apiscalls

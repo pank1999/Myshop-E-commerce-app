@@ -32,7 +32,7 @@ export default function UserList() {
     { field: 'userName', headerName: 'User', width: 150 ,renderCell:(params)=>{
       return(
         <div style={{display:"flex",alignItems:"center"}}>
-            {/* <img   src={params.row.avatar} alt="" style={{height:"35px",width:"35px", borderRadius:"50%",marginRight:"10px"}} /> */}
+            <img   src={params.row.avatar ?params.row.avatar :"https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"} alt="" style={{height:"35px",width:"35px", borderRadius:"50%",marginRight:"10px"}} />
             {params.row.userName}
         </div>
       )
