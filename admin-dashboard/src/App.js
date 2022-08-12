@@ -10,6 +10,9 @@ import Products from "./Pages/Products/Products";
 import Product from "./Pages/Product/Product";
 import NewProduct from "./Pages/NewProduct/NewProduct";
 import Login from "./Pages/Login/Login";
+import Transactions from "./Pages/Transactions/Transactions";
+import Settings from "./Pages/Settings/Settings";
+import Profile from "./Pages/AdminProfile/Profile";
 
 function App() {
    //const admin=true;
@@ -34,8 +37,10 @@ function App() {
             <Route exact path="/Products" element={<Products /> } />
             <Route exact path="/Product/EditProduct/:productid" element={<Product /> } />
             <Route exact path="/newProduct" element={<NewProduct /> } />
-
-         
+            <Route exact path="/Transactions" element={<Transactions/> } />
+            <Route exact path="/Settings" element={<Settings /> } />
+            <Route exact path="/Profile" element={<Profile />} />
+            
           </Routes>    
 
         </div>

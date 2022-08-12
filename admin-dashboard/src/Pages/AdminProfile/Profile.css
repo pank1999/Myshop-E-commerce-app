@@ -1,0 +1,41 @@
+.Profile{
+    flex:4;
+}
+.ProfileContainer{
+    padding:20px;
+    margin: 20px;
+    border: none;
+    display: flex;
+   
+    width: 40vw;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 3px rgb(215, 187, 230) ;
+}
+.ProfileLeft{
+    display: flex;
+    flex-direction: column;
+}
+.ProfileImg{
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+}
+.changeButton{
+    margin-top: 50px;
+    background-color: rgb(186, 124, 245);
+    color: black;
+   padding: 10px;
+   border: none;
+   border-radius: 10px;
+}
+.ProfileRight li{
+   list-style: none;
+   margin-bottom: 10px;
+   font-size: 18px;
+   font-weight: 600;
+   color: rgb(182, 182, 182);
+}
+.ProfileRight li span{
+    color: gray;
+    font-size: 20px;
+}

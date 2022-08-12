@@ -261,3 +261,51 @@ export const userData = [
          status:"Active"
        },
   ];
+
+
+ export const TransactionData=[
+    {
+      id:1,
+      transactionID:"7849723070293",
+      userID:"123",
+      date:"2022-10-03",
+      amount:"$ 435",
+      status:"pending"
+     },
+     { id:2,
+      transactionID:"75657fhgoho723070293",
+      userID:"12345",
+      date:"2022-10-03",
+      amount:"$ 4350",
+      status:"success"
+     },
+     { id:3,
+      transactionID:"7849df723ghfd070293",
+      userID:"16783",
+      date:"2012-10-03",
+      amount:"$ 4005",
+      status:"pending"
+     },
+     {
+      id:4,
+      transactionID:"7849723070293",
+      userID:"943123",
+      date:"2022-10-03",
+      amount:"$ 43435",
+      status:"success"
+     },
+     { id:5,
+      transactionID:"75657fhgoho723070293",
+      userID:"124353445",
+      date:"2022-10-03",
+      amount:"$ 43",
+      status:"success"
+     },
+     { id:6,
+      transactionID:"7849df723ghfd070293",
+      userID:"16783000435",
+      date:"2012-10-03",
+      amount:"$ 400435",
+      status:"pending"
+     },
+  ]

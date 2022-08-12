@@ -1,0 +1,20 @@
+.settings{
+    flex:4;
+}
+.Title{
+    font-weight: 600;
+    margin: 20px;
+}
+.settingContainer{
+    margin: 50px;
+    padding:20px;
+}
+.Theame{
+    margin-top: 20px;
+    display: flex;
+
+}
+.Theame span{
+    margin-left: 20px;
+    margin-right: 50px;
+}

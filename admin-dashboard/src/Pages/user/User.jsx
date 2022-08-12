@@ -21,21 +21,24 @@ export default function  User() {
         <div className="UserContainer">
              <div className="UserShow">
                 <div className="UserShowTop">
-                    <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80" alt="" />
+                    <img src={user.img ?user.img:"https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"} alt="" />
                     <div className="UserShowTopTitle">
-                        <span className="UserShowTopUsername">pankaj pandey</span> 
-                        <span className="UserShowTopDesc">software engineer</span>
+                        <span className="UserShowTopUsername">{user.userName}</span> 
                     </div>
                 </div>
                 <div className="UserShowBottom">
                     <span className="UserShowBottomTitle">Account Details</span>
                     <div className="UserShowBottomInfo">
                        <PermIdentity className="UserShowIcons"/>
-                       <span>pankaj1999</span>
+                       <span>{user.userName}</span>
                     </div>
                     <div className="UserShowBottomInfo">
                        <CalendarToday className="UserShowIcons"/>
-                       <span>02/09/1999</span>
+                       <span>{user.dob.slice(0,10)}</span>
+                    </div>
+                    <div className="UserShowBottomInfo">
+                        <PermIdentity className="UserShowIcons"/>
+                       <span>{user.gender}</span>
                     </div>
                     <span className="UserShowBottomTitle">Contact Details</span>
                     <div className="UserShowBottomInfo">
@@ -44,12 +47,12 @@ export default function  User() {
                     </div>
                     <div className="UserShowBottomInfo">
                        <EmailOutlined className="UserShowIcons"/>
-                       <span>pankaj@gmail.com</span>
+                       <span>{user.email}</span>
                     </div>
-                    <div className="UserShowBottomInfo">
+                    {/* <div className="UserShowBottomInfo">
                        <EmailOutlined className="UserShowIcons"/>
                        <span>Bhopal Madhya Pradesh</span>
-                    </div>
+                    </div> */}
                 </div>
              </div>
              <div className="UserUpdate">
@@ -58,7 +61,7 @@ export default function  User() {
                     <div className="UserUpdateFormLeft">
                          <div className="UserUpdateItem">
                             <labal>Username</labal>
-                            <input type="text"  placeholder="pankaj1999" className="UserUpdateItemInput"/>
+                            <input type="text"  placeholder={user.userName} className="UserUpdateItemInput"/>
                          </div>
                          <div className="UserUpdateItem">
                             <labal>Full Name</labal>
@@ -66,29 +69,29 @@ export default function  User() {
                          </div>
                          <div className="UserUpdateItem">
                             <labal>D. O. B</labal>
-                            <input type="date"  placeholder="02/09/2000" className="UserUpdateItemInput"/>
+                            <input type="date"  placeholder={user.dob} className="UserUpdateItemInput"/>
                          </div>
                          <div className="UserUpdateItem">
                             <labal>Mobile No</labal>
-                            <input type="text"  placeholder="8630211986" className="UserUpdateItemInput"/>
+                            <input type="text"  placeholder={user.mobileNO?user.mobileNO:"xxxxxxxxxx"}  className="UserUpdateItemInput"/>
                          </div>
-                         <div className="UserUpdateItem">
+                         {/* <div className="UserUpdateItem">
                             <labal>Address</labal>
                             <input type="text"  placeholder="Bhopal Madhya Pradesh" className="UserUpdateItemInput"/>
-                         </div>
+                         </div> */}
                          <div className="UserUpdateItem">
                             <labal>Email Id</labal>
-                            <input type="email"  placeholder="pankaj@gmail.com" className="UserUpdateItemInput"/>
+                            <input type="email"  placeholder={user.email} className="UserUpdateItemInput"/>
                          </div>
 
                     </div>
                     <div className="UserUpdateFormRight">
                            <div className="UserUpdateUpload">
-                                <img className="UploadImg" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"  alt=""/>
+                                <img className="UploadImg" src={user.img ?user.img:"https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"}  alt=""/>
                                 <labal htmlFor="file"><Publish /></labal>
                                 <input type="file" id="file" />
                            </div>
-                           <button className="UserUpdateButton">Update</button>
+                           <button className="UserUpdateButton" disabled >Update</button>
                     </div>
 
                    

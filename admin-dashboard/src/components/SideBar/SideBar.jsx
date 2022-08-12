@@ -10,11 +10,13 @@ export default function SideBar() {
                     Dashboard
             </h3>
             <ul className='sideBarList'>
-                 <li className='sideBarListItem active'>
-                    <LineStyle className='sideBarIcon'/>
-                    <Link to="/" className='linkItem ' >Home</Link>
-                    
-                 </li>
+                 <Link to="/" className='linkItem '>
+                    <li className='sideBarListItem active'>
+                      <LineStyle className='sideBarIcon'/>
+                       Home
+                     </li>
+                 </Link>
+                 
                  <li className='sideBarListItem'>
                     <Timeline className='sideBarIcon'/>
                     Analytics
@@ -33,22 +35,27 @@ export default function SideBar() {
                     Quick Menu
             </h3>
             <ul className='sideBarList'>
-                 <li className='sideBarListItem'>
-                    <PersonOutline className='sideBarIcon'/>
-                     <Link to="/Users" className='linkItem ' >User</Link>
-                    
-                 </li>
-                 <li className='sideBarListItem'>
-                    <Timeline  className='sideBarIcon'/>
-                    <Link to="/Products" className='linkItem ' >
-                    Products
-                    </Link>
-                    
-                 </li>
-                 <li className='sideBarListItem'>
-                    <TrendingUp  className='sideBarIcon'/>
-                    Transactions
-                 </li>
+                  <Link to="/Users" className='linkItem '>
+                    <li className='sideBarListItem'>
+                     <PersonOutline className='sideBarIcon'/>
+                      Users
+                     </li>
+                  </Link>
+                 
+                 <Link to="/Products" className='linkItem ' >
+                    <li className='sideBarListItem'>
+                      <Timeline  className='sideBarIcon'/>
+                      Products
+                    </li>
+                  </Link>
+                 
+                 <Link to="/Transactions" className='linkItem '>
+                     <li className='sideBarListItem'>
+                       <TrendingUp  className='sideBarIcon'/>
+                       Transactions
+                      </li>
+                  </Link>
+                 
                  <li className='sideBarListItem'>
                     <ReportOutlined  className='sideBarIcon'/>
                     Report

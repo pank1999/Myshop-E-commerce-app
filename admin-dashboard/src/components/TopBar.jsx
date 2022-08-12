@@ -3,10 +3,10 @@ import "./TopBar.css";
 import {NotificationsNone , Language ,Settings, PowerOutlined} from '@material-ui/icons';
 import { Logout } from '../redux/apiCalls';
 import { useDispatch} from 'react-redux';
+import {Link} from "react-router-dom";
 
 export default function TopBar() {
      const dispatch=useDispatch();
-
     const handleLogout=()=>{
        Logout(dispatch);
     }
@@ -22,14 +22,18 @@ export default function TopBar() {
                      <span className='topIconBag'>2</span>
                 </div>
                 <div className='topBarIcons'>
-                     <Language />
+                     <Language /><spna style={{fontSize:"10px"}}>ENG</spna> 
                 </div>
                 <div className='topBarIcons'>
-                     <Settings/>
+                       
+                        <Link to="/Settings" className="linkItem"> <Settings/> </Link>
+                      
+                    
+                     
                      
                 </div>
                 <div style={{display:"flex"}}>
-                  <img  src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80' alt='' className='topAvatar'/>
+                 <Link to="/Profile"> <img  src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80' alt='' className='topAvatar'/></Link>
                   <button onClick={handleLogout} className='Logoutbutton'>Logout</button>
                 </div>
                 

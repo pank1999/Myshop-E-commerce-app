@@ -132,3 +132,7 @@
     height: 30px;
     cursor: pointer;
 }
+.UserUpdateButton:disabled{
+    background-color: gray;
+    cursor: not-allowed;
+}
