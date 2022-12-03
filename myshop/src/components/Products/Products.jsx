@@ -20,8 +20,8 @@ export default function Products({cat,Filter,sort}) {
         try{
            const res=await Axios.get(
             cat
-            ?`http://localhost:3001/api/product?category=${cat}`
-            : 'http://localhost:3001/api/product'
+            ?`http://localhost:3003/api/product?category=${cat}`
+            : 'http://localhost:3003/api/product'
           );
           setProducts(res.data);
         }catch(err){

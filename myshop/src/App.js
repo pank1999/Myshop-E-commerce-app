@@ -16,6 +16,7 @@ import {
 } from "react-router-dom";
 import Success from "./components/StripeCheckout/Success";
 import { useSelector } from "react-redux";
+import UserProfile from "./components/UserProfile/UserProfile"
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
           <Route  path="/products/:category" element={<ProductList/>} />
           <Route  path="/product/:id" element={<SingleProduct/>} />
           <Route exact path="/cart" element={<Cart/>} />
-
+          <Route exact path="/UserProfile" element={<UserProfile/>} />
           <Route exact path="/Success" element={<Success/>} />
           
           

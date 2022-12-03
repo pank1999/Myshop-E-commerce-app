@@ -90,9 +90,6 @@ export default function Login() {
                  {error && <Error>Some thing went wrong</Error>}
                  <Link>Do not you  remember the Password ?</Link>
                  <Link> Create an account</Link>
-                 
-
-
              </Form>
          </Wrapper>
     </Container>

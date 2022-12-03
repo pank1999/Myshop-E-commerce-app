@@ -44,6 +44,27 @@ export const Categaries=[
     }
 ];
 
+export const newCategories=[
+    {
+        id:1,
+        img:"https://th.bing.com/th/id/OIP.uCeJXGNoJNCKND4lyhRRAgHaHa?pid=ImgDet&rs=1",
+        title:"SHIRT",
+        cat:"shirt"
+    },
+    {
+        id:2,
+        img:"https://i.pinimg.com/originals/97/fe/af/97feafd5188dbe5fbe44babd2047e333.jpg",
+        title:"SHOSE",
+        cat:"shose"
+    },
+    {
+        id:3,
+        img:"https://cdnb.lystit.com/photos/2013/04/18/rock-republic-iconic-henlee-bootcut-jeans-product-1-7951259-532325530.jpeg",
+        title:"JEENS",
+        cat:"Jeens"
+    }
+]
+
 export const popularProducts=[
     {
         id:1,

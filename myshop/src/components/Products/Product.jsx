@@ -25,9 +25,11 @@ const Info=styled.div`
 const Container=styled.div`
    flex:1;
    margin:5px;
-   min-width:280px;
+   min-width:200px;
+   max-width:250px;
    display:flex;
-   height:350px;
+   min-height:200px;
+   max-height:250px;
    align-item:center;
    justify-content:center;
    background-color:#f5fbfd;

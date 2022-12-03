@@ -7,9 +7,11 @@ import Newsletter from '../Newsletter/Newsletter'
 import Products from '../Products/Products'
 import {mobile} from "../../respnsive";
 import { useLocation } from 'react-router-dom'
+import NewCategory from '../Categaries/NewCategory'
 
 
 const Container=styled.div``
+
 
 const FilterContainer=styled.div`
 display:flex;
@@ -66,7 +68,6 @@ export default function ProductList() {
      <Container>
           <Navbar/>
           <Announcement/>
-          <Title>{cat}</Title>
           <FilterContainer>
              <Filter><FilterText>Filter Products</FilterText>
                 <Select name="color" onChange={handleFilter}>
@@ -97,6 +98,9 @@ export default function ProductList() {
                 </Select>
              </Filter>
           </FilterContainer>
+          <Title>{cat}</Title>
+          <NewCategory/>
+          <h2 style={{textAlign:"center",padding:"10px",backgroundColor:"coral"}}>Some top results for this categories</h2>
           <Products cat={cat} Filter={filters} sort={sort} />
           <Newsletter/>
           <Footer/>

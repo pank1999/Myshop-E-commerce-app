@@ -4,7 +4,7 @@ import Axios from "axios";
 const BASE_URL="http://localhost:3003/api";
 
 const Token=JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
-
+// const Token="";
 export const publicRequest=Axios.create({
     baseURL:BASE_URL,
 });

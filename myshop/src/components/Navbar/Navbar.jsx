@@ -28,16 +28,11 @@ const Left=styled.div`
   align-items:center;
 `;
 
-const Language=styled.span`
- font-size:14px;
- cursor:pointer;
- ${mobile({display:"none"})};
-`;
-
 const Input=styled.input`
 border:none;
 width:100%;
 height:25px;
+padding-left:40%;
 ${mobile({height:"15px",width:"70px",marginLeft:"0px"})};
 `;
 
@@ -47,12 +42,12 @@ display:flex;
 align-items:center;
 margin-left:25px;
 padding:3px;
-width:60%;
+width:100%;
 ${mobile({marginLeft:"0px",padding:'3px'})};
 `;
 
 const Center=styled.div`
-  flex:1;
+  flex:2;
 `;
 const Logo=styled.h1`
   font-weight:bold;
@@ -76,6 +71,8 @@ ${mobile({marginLeft:"5px"})};
 export default function Navbar() {
 
   const cart=useSelector(state=>state.cart);
+  const loggedInUser=useSelector(state=>state.user.currentUser.user);
+  console.log(loggedInUser);
   console.log(cart);
 
   return (
@@ -83,30 +80,39 @@ export default function Navbar() {
          <Wrapper>
              
              <Left>
-                 <Language>EN</Language>
-                 <SearchContainer>
-                      
-                    <Input placeholder="search" />   
-                    <Search  style={{color:"teal",fontSize:"20px",marginLeft:"10px",cursor:"pointer"}}/>
-                 </SearchContainer>
-             </Left>
-             <Center>
+              <Link to="/" style={{textDecoration:'none',color:"black"}} >
                  <Logo>
                      Myshop.
                  </Logo>
+              </Link>
+             </Left>
+             <Center>
+                   <SearchContainer>
+                      <Input placeholder="search" />   
+                      <Search  style={{color:"teal",fontSize:"20px",marginLeft:"10px",cursor:"pointer"}}/>
+                   </SearchContainer>
              </Center>
              <Right>
-                 <Link to="/" style={{textDecoration:'none'}}><MenuItem>Home</MenuItem></Link>
-                 <Link to="/register" style={{textDecoration:'none'}}><MenuItem>Register</MenuItem></Link>
-                 <Link to="/login" style={{textDecoration:'none'}}><MenuItem>SIGN IN</MenuItem></Link>
- 
-                <Link to='/cart'>
+                 <Link to="/" style={{textDecoration:'none',color:"black"}}><MenuItem>Home</MenuItem></Link>
+                 {
+                  !loggedInUser.isAdmin 
+                  ?
+                 <Link to="/products" style={{textDecoration:'none',color:"black"}}><MenuItem>Products</MenuItem></Link>
+                   :
+                   <>
+                   <Link to="/register" style={{textDecoration:'none',color:"black"}}><MenuItem>Register</MenuItem></Link>
+                   <Link to="/login" style={{textDecoration:'none',color:"black"}}><MenuItem>SIGN IN</MenuItem></Link>    
+                   </>
+               }
+                <Link to='/cart' style={{textDecoration:'none',color:"black"}}>
                     
                     <Badge badgeContent={cart.quantity} color="primary" style={{marginLeft:"10px",cursor:"pointer"}}>
                       <ShoppingCartOutlined />
                     </Badge>
                  </Link>
-                 <AccountCircle color="primary" style={{marginLeft:"12px",cursor:"pointer",fontSize:"34px"}}/>
+                 <Link to="/UserProfile">
+                    <AccountCircle color="primary" style={{marginLeft:"12px",cursor:"pointer",fontSize:"34px"}}/>
+                 </Link>
 
              </Right>
 
