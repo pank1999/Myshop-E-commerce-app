@@ -70,7 +70,7 @@ const MenuItem = styled.div`
 export default function Navbar() {
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
-  const loggedInUser = useSelector((state) => state.user.currentUser.user);
+  const loggedInUser = useSelector((state) => state.user.currentUser?.user);
   console.log(loggedInUser);
   console.log(cart);
   const [searchValue, setSearchValue] = useState();
@@ -85,7 +85,7 @@ export default function Navbar() {
       <Wrapper>
         <Left>
           <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-            <Logo>Myshop.</Logo>
+            <Logo>E-commerce</Logo>
           </Link>
         </Left>
         <Center>
@@ -105,7 +105,7 @@ export default function Navbar() {
           <Link to="/" style={{ textDecoration: "none", color: "black" }}>
             <MenuItem>Home</MenuItem>
           </Link>
-          {!loggedInUser.isAdmin ? (
+          {loggedInUser?.isAdmin === false ? (
             <Link
               to="/products"
               style={{ textDecoration: "none", color: "black" }}
@@ -128,25 +128,34 @@ export default function Navbar() {
               </Link>
             </>
           )}
-          <Link to="/cart" style={{ textDecoration: "none", color: "black" }}>
-            <Badge
-              badgeContent={cart.quantity}
-              color="primary"
-              style={{ marginLeft: "10px", cursor: "pointer" }}
-            >
-              <ShoppingCartOutlined />
-            </Badge>
-          </Link>
-          <Link to="/UserProfile">
-            <AccountCircle
-              color="primary"
-              style={{
-                marginLeft: "12px",
-                cursor: "pointer",
-                fontSize: "34px",
-              }}
-            />
-          </Link>
+          {loggedInUser?.isAdmin === false ? (
+            <>
+              <Link
+                to="/cart"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <Badge
+                  badgeContent={cart.quantity}
+                  color="primary"
+                  style={{ marginLeft: "10px", cursor: "pointer" }}
+                >
+                  <ShoppingCartOutlined />
+                </Badge>
+              </Link>
+              <Link to="/UserProfile">
+                <AccountCircle
+                  color="primary"
+                  style={{
+                    marginLeft: "12px",
+                    cursor: "pointer",
+                    fontSize: "34px",
+                  }}
+                />
+              </Link>
+            </>
+          ) : (
+            ""
+          )}
         </Right>
       </Wrapper>
     </Container>

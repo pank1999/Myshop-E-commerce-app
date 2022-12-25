@@ -55,7 +55,7 @@ const Logo = styled.h1`
   margin-left: 20px;
 `;
 const Desc = styled.p`
-  font-sie: 20px;
+  font-sie: 18px;
   margin: 20px 20px;
 `;
 
@@ -80,7 +80,7 @@ export default function Footer() {
   return (
     <Container>
       <Left>
-        <Logo>MyShop.</Logo>
+        <Logo>E-commerce</Logo>
         <Desc>
           publishing and graphic design, Lorem ipsum is a placeholder text
           commonly used to demonstrate the visual form of a document or a

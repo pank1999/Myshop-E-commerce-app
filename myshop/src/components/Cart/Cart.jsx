@@ -1,4 +1,4 @@
-import { AddCircle, RemoveCircle } from "@material-ui/icons";
+import { AddCircle, Favorite, RemoveCircle } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Announcement from "../Announcement";
@@ -8,7 +8,8 @@ import { mobile } from "../../respnsive";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethod";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 const KEY =
   "pk_test_51LC4p1SEoWVQXACh7XxJvVpTX3lLhNNY5plbrJobtphGFU2GaJuAc9thMvurHorG7wkkfsd1tnwNtVOlO8iKS8Sd00kSqg9W3W";
@@ -28,15 +29,6 @@ const Top = styled.div`
   justify-content: space-between;
   padding: 20px;
   ${mobile({ padding: "5px" })};
-`;
-
-const Toptexts = styled.div`
-  ${mobile({ display: "none" })};
-`;
-const Toptext = styled.span`
-  text-decoration: underline;
-  cursor: pointer;
-  margin: 0px 10px;
 `;
 
 const TopButton = styled.button`
@@ -129,15 +121,15 @@ const SummaryTitle = styled.h1`
 `;
 const SummaryItemText = styled.span``;
 const SummaryItemPrice = styled.span``;
-const Button = styled.button`
-  width: 100%;
-  padding: 10px;
-  background-color: teal;
-  border: none;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-`;
+// const Button = styled.button`
+//   width: 100%;
+//   padding: 10px;
+//   background-color: teal;
+//   border: none;
+//   color: white;
+//   font-weight: 600;
+//   cursor: pointer;
+// `;
 
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
@@ -151,7 +143,7 @@ export default function Cart() {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await userRequest.post("/checkout/payment", {
+        const res = await userRequest.post("api/checkout/payment", {
           tokenId: stripeToken.id,
           amount: cart.total * 100,
         });
@@ -170,12 +162,17 @@ export default function Cart() {
       <Wrapper>
         <Title>Your Bag</Title>
         <Top>
-          <TopButton>Continue Shoping</TopButton>
-          <Toptexts>
-            <Toptext>shoping bag(2)</Toptext>
-            <Toptext>your wishlist(0)</Toptext>
-          </Toptexts>
-          <TopButton type="filled">Checkout Now</TopButton>
+          <Link to="/products" style={{ textDecoration: "none" }}>
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "teal", color: "white" }}
+            >
+              Continue shoping
+            </Button>
+          </Link>
+          <Button variant="contained" color="secondary">
+            Wishlist <Favorite style={{ fontSize: "20px" }} />
+          </Button>
         </Top>
         <Bottom>
           <Info>
@@ -222,10 +219,6 @@ export default function Cart() {
               <SummaryItemText>Estimated Shipping</SummaryItemText>
               <SummaryItemPrice>$10</SummaryItemPrice>
             </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Discount</SummaryItemText>
-              <SummaryItemPrice>$5</SummaryItemPrice>
-            </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>${cart.total}</SummaryItemPrice>
@@ -241,7 +234,13 @@ export default function Cart() {
               token={onToken}
               stripeKey={KEY}
             >
-              <Button>CHECKOUT</Button>
+              <Button
+                variant="contained"
+                color="primary"
+                style={{ width: "100%" }}
+              >
+                Checkout
+              </Button>
             </StripeCheckout>
           </Summary>
         </Bottom>

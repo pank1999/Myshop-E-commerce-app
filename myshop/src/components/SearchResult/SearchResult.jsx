@@ -14,7 +14,9 @@ export default function SearchResult() {
   useEffect(() => {
     const getSearchResult = async () => {
       try {
-        const res = await publicRequest.get(`product/search/` + productName);
+        const res = await publicRequest.get(
+          `api/product/search/` + productName
+        );
         setSearchResult(res.data);
         console.log(res.data);
       } catch (err) {
