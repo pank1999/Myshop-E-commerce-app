@@ -66,6 +66,19 @@ router.get("/find/:id",async(req,res)=>{
 
 });
 
+router.get("/search/:query",async(req,res)=>{
+   try{
+      console.log("search routes");
+      const searchResult=await Product.find({title:req.params.query});
+      console.log(searchResult);
+      res.status(200).json(searchResult);
+   }
+   catch(err)
+  {
+     res.status(500).json(err);
+  }
+});
+
 
 
 
